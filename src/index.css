@@ -1,7 +1,7 @@
 /* src/index.css */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 @keyframes fadeIn {
   from {
@@ -14,22 +14,170 @@
   }
 }
 
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
   }
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.4s ease-out;
 }
 
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+}
+
+/* استایل‌های سفارشی برای کامپوننت‌ها */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: #c7d2fe;
+}
+
+/* استایل مدرن برای inputها */
+.modern-input {
+  @apply w-full px-4 py-3 bg-white border border-gray-200 rounded-xl transition-all duration-300;
+  @apply focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-blue-50;
+  @apply placeholder-gray-400 text-gray-700;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.modern-input:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+}
+
+/* استایل مدرن برای selectها */
+.modern-select {
+  @apply w-full px-4 py-3 bg-white border border-gray-200 rounded-xl transition-all duration-300;
+  @apply focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-blue-50;
+  @apply text-gray-700 cursor-pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+.modern-select:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+}
+
+/* استایل مدرن برای دکمه‌ها */
+.btn-primary {
+  @apply px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-xl transition-all duration-300;
+  @apply hover:from-blue-600 hover:to-blue-700 hover:shadow-lg hover:shadow-blue-500/25;
+  @apply focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-success {
+  @apply px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-medium rounded-xl transition-all duration-300;
+  @apply hover:from-green-600 hover:to-green-700 hover:shadow-lg hover:shadow-green-500/25;
+  @apply focus:ring-2 focus:ring-green-500 focus:ring-offset-2;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-danger {
+  @apply px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white font-medium rounded-xl transition-all duration-300;
+  @apply hover:from-red-600 hover:to-red-700 hover:shadow-lg hover:shadow-red-500/25;
+  @apply focus:ring-2 focus:ring-red-500 focus:ring-offset-2;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-gradient-to-r from-gray-500 to-gray-600 text-white font-medium rounded-xl transition-all duration-300;
+  @apply hover:from-gray-600 hover:to-gray-700 hover:shadow-lg hover:shadow-gray-500/25;
+  @apply focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+  box-shadow: 0 4px 15px rgba(107, 114, 128, 0.3);
+}
+
+/* استایل برای کارت‌ها */
+.modern-card {
+  @apply bg-white rounded-2xl p-6 transition-all duration-300;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.modern-card:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* استایل برای badgeها */
+.badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+}
+
+.badge-blue {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.badge-green {
+  @apply bg-green-100 text-green-800;
+}
+
+.badge-purple {
+  @apply bg-purple-100 text-purple-800;
+}
+
+.badge-orange {
+  @apply bg-orange-100 text-orange-800;
 }
 
 /* اسکرول بار سفارشی */
@@ -38,43 +186,15 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f1f5f9;
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: #cbd5e1;
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
-
-[dir="rtl"] {
-  text-align: right;
-}
-
-[dir="ltr"] {
-  text-align: left;
-}
-
-/* استایل‌های واکنش‌گرا برای زبان‌های مختلف */
-.rtl-support {
-  direction: rtl;
-}
-
-.ltr-support {
-  direction: ltr;
-}
-
-/* برای عناصری که باید direction ثابت داشته باشند */
-.fixed-direction-ltr {
-  direction: ltr !important;
-  text-align: left !important;
-}
-
-.fixed-direction-rtl {
-  direction: rtl !important;
-  text-align: right !important;
+  background: #94a3b8;
 }

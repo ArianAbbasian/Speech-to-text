@@ -1,20 +1,20 @@
 // src/components/TextManager/TextManager.jsx
 import React, { useState, useEffect } from 'react';
 import { useText } from '../../contexts/TextContext';
-import { useLanguage } from '../../contexts/LanguageContext'; // تغییر به useLanguage
+import { useLanguage } from '../../contexts/LanguageContext';
 import TextItem from '../TextItem/TextItem';
 
 const TextManager = () => {
   const { texts, getFilteredTexts, searchTexts, getStatistics } = useText();
-  const { t } = useLanguage(); // استفاده از useLanguage
+  const { t } = useLanguage();
+  
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [filteredTexts, setFilteredTexts] = useState([]);
   
-  const categories = ['all', 'کار', 'شخصی', 'یادداشت', 'ایده'];
+  const categories = ['all', t('textItem.category.work'), t('textItem.category.personal'), t('textItem.category.note'), t('textItem.category.idea')];
   const stats = getStatistics();
 
-  // اعمال فیلترها هنگام تغییر
   useEffect(() => {
     const filters = {};
     
@@ -45,70 +45,93 @@ const TextManager = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-        <h2 className="text-2xl font-bold text-gray-800">
-          {t('textManager.title')}
-        </h2>
+    <div className="modern-card animate-fadeIn">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 gap-4">
+        <div>
+          <h2 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent pb-1">
+            {t('textManager.title')}
+          </h2>
+          <p className="text-gray-600 mt-2">{t('textManager.subtitle')}</p>
+        </div>
         
         {/* آمار سریع */}
-        <div className="flex gap-4 text-sm text-gray-600">
-          <span>{t('textManager.total')}: {stats.totalTexts}</span>
-          <span>{t('statistics.totalWords')}: {stats.totalWords}</span>
-          <span>{t('statistics.today')}: {stats.todayTexts}</span>
+        <div className="flex gap-4 text-sm">
+          <div className="bg-blue-50 px-4 py-2 rounded-xl border border-blue-200">
+            <div className="font-bold text-blue-600">{stats.totalTexts}</div>
+            <div className="text-blue-500">{t('statistics.totalTexts')}</div>
+          </div>
+          <div className="bg-green-50 px-4 py-2 rounded-xl border border-green-200">
+            <div className="font-bold text-green-600">{stats.totalWords}</div>
+            <div className="text-green-500">{t('statistics.totalWords')}</div>
+          </div>
+          <div className="bg-orange-50 px-4 py-2 rounded-xl border border-orange-200">
+            <div className="font-bold text-orange-600">{stats.todayTexts}</div>
+            <div className="text-orange-500">{t('statistics.today')}</div>
+          </div>
         </div>
       </div>
       
       {/* فیلتر و جستجو */}
-      <div className="flex flex-col md:flex-row gap-4 mb-6">
-        <div className="flex-1">
-          <input
-            type="text"
-            placeholder={t('textManager.searchPlaceholder')}
-            value={searchTerm}
-            onChange={handleSearchChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg text-right focus:border-blue-500 focus:outline-none"
-          />
+      <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl p-6 mb-8 border border-gray-200">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2">
+            <input
+              type="text"
+              placeholder={t('textManager.searchPlaceholder')}
+              value={searchTerm}
+              onChange={handleSearchChange}
+              className="modern-input"
+            />
+          </div>
+          
+          <div className="flex gap-3">
+            <select
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+              className="modern-select flex-1"
+            >
+              {categories.map(category => (
+                <option key={category} value={category}>
+                  {category === 'all' ? t('textManager.allCategories') : category}
+                </option>
+              ))}
+            </select>
+            
+            <button
+              onClick={clearFilters}
+              className="btn-secondary whitespace-nowrap"
+            >
+              {t('textManager.clearFilter')}
+            </button>
+          </div>
         </div>
-        
-        <select
-          value={selectedCategory}
-          onChange={handleCategoryChange}
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
-        >
-          <option value="all">{t('textManager.allCategories')}</option>
-          {categories.filter(cat => cat !== 'all').map(category => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
-        
-        <button
-          onClick={clearFilters}
-          className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-all"
-        >
-          {t('textManager.clearFilter')}
-        </button>
       </div>
 
       {/* لیست متن‌ها */}
-      <div className="space-y-4">
+      <div className="space-y-4 custom-scrollbar">
         {filteredTexts.map(text => (
           <TextItem key={text.id} text={text} />
         ))}
         
         {filteredTexts.length === 0 && (
-          <div className="text-center text-gray-500 py-12">
+          <div className="text-center text-gray-500 py-16 bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl border-2 border-dashed border-gray-300">
+            <div className="text-6xl mb-4">📝</div>
             {searchTerm || selectedCategory !== 'all' ? (
-              <p>{t('textManager.noResults')}</p>
+              <div>
+                <p className="text-xl font-semibold text-gray-700 mb-2">
+                  {t('textManager.noResults')}
+                </p>
+                <p className="text-gray-600">{t('textManager.tryDifferentFilters')}</p>
+              </div>
             ) : texts.length === 0 ? (
               <div>
-                <p className="text-lg mb-2">{t('textManager.noTexts')}</p>
-                <p className="text-sm">{t('textManager.noTextsDescription')}</p>
+                <p className="text-xl font-semibold text-gray-700 mb-2">
+                  {t('textManager.noTexts')}
+                </p>
+                <p className="text-gray-600">{t('textManager.noTextsDesc')}</p>
               </div>
             ) : (
-              <p>متن‌های شما اینجا نمایش داده می‌شوند</p>
+              <p className="text-lg text-gray-600">{t('textManager.startAdding')}</p>
             )}
           </div>
         )}

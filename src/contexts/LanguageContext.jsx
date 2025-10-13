@@ -1,6 +1,9 @@
 // src/contexts/LanguageContext.jsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { fa, en, ar, tr } from '../locales';
+import { fa } from '../locales/fa';
+import { en } from '../locales/en';
+import { ar } from '../locales/ar';
+import { tr } from '../locales/tr';
 
 const LanguageContext = createContext();
 
@@ -13,80 +16,121 @@ export const useLanguage = () => {
 };
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('fa-IR');
-  const [translations, setTranslations] = useState(fa);
+  // زبان پیش‌فرض انگلیسی
+  const [uiLanguage, setUiLanguage] = useState('en');
+  const [speechLanguage, setSpeechLanguage] = useState('en-US');
+  const [translations, setTranslations] = useState(en);
 
-  // نگاشت کد زبان به فایل ترجمه
-  const languageMap = {
-    'fa-IR': fa,
-    'en-US': en,
-    'en-GB': en,
-    'ar-SA': ar,
-    'tr-TR': tr
+  const languages = {
+    en: { 
+      name: 'English', 
+      flag: '🇺🇸', 
+      translations: en,
+      speechCode: 'en-US'
+    },
+    fa: { 
+      name: 'فارسی', 
+      flag: '🇮🇷', 
+      translations: fa,
+      speechCode: 'fa-IR'
+    },
+    ar: { 
+      name: 'العربية', 
+      flag: '🇸🇦', 
+      translations: ar,
+      speechCode: 'ar-SA'
+    },
+    tr: { 
+      name: 'Türkçe', 
+      flag: '🇹🇷', 
+      translations: tr,
+      speechCode: 'tr-TR'
+    }
   };
 
-  // بارگذاری زبان از localStorage
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('appLanguage');
-    if (savedLanguage && languageMap[savedLanguage]) {
-      setLanguage(savedLanguage);
-      setTranslations(languageMap[savedLanguage]);
-      // تنظیم direction اولیه
-      document.documentElement.dir = 
-        savedLanguage.startsWith('fa') || savedLanguage.startsWith('ar') ? 'rtl' : 'ltr';
-      document.documentElement.lang = savedLanguage;
+    const savedUiLanguage = localStorage.getItem('appUiLanguage');
+    const savedSpeechLanguage = localStorage.getItem('appSpeechLanguage');
+    
+    // اگر زبان ذخیره شده وجود دارد از آن استفاده کن، در غیر این صورت از انگلیسی
+    if (savedUiLanguage && languages[savedUiLanguage]) {
+      setUiLanguage(savedUiLanguage);
+      setTranslations(languages[savedUiLanguage].translations);
+    } else {
+      // زبان پیش‌فرض انگلیسی
+      setUiLanguage('en');
+      setTranslations(en);
+      localStorage.setItem('appUiLanguage', 'en');
+    }
+    
+    if (savedSpeechLanguage) {
+      setSpeechLanguage(savedSpeechLanguage);
+    } else {
+      // زبان گفتار پیش‌فرض انگلیسی
+      setSpeechLanguage('en-US');
+      localStorage.setItem('appSpeechLanguage', 'en-US');
     }
   }, []);
 
-  const changeLanguage = (newLanguage) => {
-    if (languageMap[newLanguage]) {
-      setLanguage(newLanguage);
-      setTranslations(languageMap[newLanguage]);
-      localStorage.setItem('appLanguage', newLanguage);
+  const changeLanguage = (lang) => {
+    if (languages[lang]) {
+      setUiLanguage(lang);
+      setSpeechLanguage(languages[lang].speechCode);
+      setTranslations(languages[lang].translations);
       
-      // تغییر direction صفحه بر اساس زبان
-      document.documentElement.dir = 
-        newLanguage.startsWith('fa') || newLanguage.startsWith('ar') ? 'rtl' : 'ltr';
-      document.documentElement.lang = newLanguage;
-      
-      console.log('Language changed to:', newLanguage);
+      localStorage.setItem('appUiLanguage', lang);
+      localStorage.setItem('appSpeechLanguage', languages[lang].speechCode);
     }
   };
 
-  // تابع ترجمه با fallback
-  const t = (key) => {
-    try {
-      const keys = key.split('.');
-      let value = translations;
-      
-      for (const k of keys) {
-        value = value[k];
-        if (value === undefined) {
-          // Fallback به انگلیسی اگر ترجمه پیدا نشد
-          let fallbackValue = en;
-          for (const k of keys) {
-            fallbackValue = fallbackValue[k];
-            if (fallbackValue === undefined) {
-              console.warn(`Translation key not found: ${key}`);
-              return key;
-            }
-          }
-          return fallbackValue;
-        }
-      }
-      
-      return value;
-    } catch (error) {
-      console.warn(`Translation error for key: ${key}`, error);
-      return key;
+  const changeSpeechLanguage = (speechLang) => {
+    setSpeechLanguage(speechLang);
+    localStorage.setItem('appSpeechLanguage', speechLang);
+    
+    const matchingLang = Object.entries(languages).find(([_, langData]) => 
+      langData.speechCode === speechLang
+    );
+    
+    if (matchingLang) {
+      const [langKey] = matchingLang;
+      setUiLanguage(langKey);
+      setTranslations(languages[langKey].translations);
+      localStorage.setItem('appUiLanguage', langKey);
     }
+  };
+
+  const t = (key) => {
+    const keys = key.split('.');
+    let value = translations;
+    
+    for (const k of keys) {
+      value = value[k];
+      if (value === undefined) {
+        console.warn(`Translation key not found: ${key}`);
+        return key;
+      }
+    }
+    
+    return value;
+  };
+
+  const getSpeechLanguages = () => {
+    return Object.values(languages).map(lang => ({
+      code: lang.speechCode,
+      name: lang.name,
+      flag: lang.flag
+    }));
   };
 
   const value = {
-    language,
+    uiLanguage,
+    speechLanguage,
     translations,
+    languages,
     changeLanguage,
-    t
+    changeSpeechLanguage,
+    t,
+    getSpeechLanguages
   };
 
   return (

@@ -1,113 +1,178 @@
-// src/locales/en.js
 export const en = {
   // General
-  appName: "Speech to Text",
-  appDescription: "Advanced speech to text conversion tool",
-  madeWithLove: "Made with ❤️ for the global community",
-  
+  app: {
+    title: "Persian Speech to Text",
+    description: "Advanced speech to text tool for Persian language",
+    madeWith: "Made with ❤️ for Persian community",
+    language: "Language",
+  },
+
   // Tabs
   tabs: {
     recorder: "🎤 Speech to Text",
-    texts: "📝 Saved Texts", 
+    texts: "📝 Saved Texts",
     search: "🔍 Advanced Search",
     stats: "📊 Statistics",
-    data: "🔄 Data Management"
+    data: "🔄 Data Management",
   },
-  
+
   // Speech to Text
   speechToText: {
     title: "Speech to Text",
     startSpeaking: "Start Speaking",
+    speechLanguage: "Speech Language",
+    processingText: "Processing text...",
     stop: "Stop",
+    processing: "Processing...",
+    listening: "Listening... Speak now",
+    placeholder: 'Click "Start Speaking" and speak in English',
+    suggestion: "Tip: Speak clear short sentences",
+    transcribedText: "Transcribed Text:",
     saveText: "Save Text",
     saveAndClear: "Save & Clear",
     clear: "Clear",
-    processing: "Processing...",
-    listening: "Listening... Speak now",
-    transcribedText: "Transcribed Text:",
     words: "words",
     characters: "characters",
-    placeholder: "Click \"Start Speaking\" and speak",
-    suggestion: "Tip: Speak clear short sentences",
-    textSaved: "Text saved successfully!"
+    success: "Text saved successfully!",
+    listeningStatus: "Listening",
+    currentLanguage: "Current Language",
+    subtitle: "Convert speech to text with high accuracy",
   },
-  
+
   // Text Management
   textManager: {
     title: "Saved Texts",
     total: "Total",
     today: "Today",
+    clearFilter: "Clear Filter",
     searchPlaceholder: "Search in texts...",
     allCategories: "All Categories",
-    clearFilter: "Clear Filter",
     noTexts: "No texts saved yet",
-    noTextsDescription: "Texts converted from speech will be displayed here",
+    noTextsDesc: "Transcribed texts will be displayed here",
     noResults: "No texts found with selected filters",
+    subtitle: "Manage and organize converted texts",
+    tryDifferentFilters: "Try using different filters",
+    startAdding: "Start adding your texts",
+  },
+
+  // Search
+  textItem: {
     edit: "Edit",
-    delete: "Delete",
+    save: "Save",
+    cancel: "Cancel",
     copy: "Copy",
     play: "Play",
     stop: "Stop",
+    pause: "Pause",
     resume: "Resume",
     speed: "Speed",
-    settings: "Settings"
+    playing: "Playing...",
+    paused: "Paused",
+    finished: "Finished",
+    edited: "Edited",
+    delete: "Delete",
+    settings: "Settings",
+    speedChangeNotice: "Speed change will be applied to current playback",
+    category: {
+      work: "Work",
+      personal: "Personal",
+      note: "Note",
+      idea: "Idea",
+      speedChangeNotice: "Speed change applies to the current playback",
+    },
   },
-  
-  // Advanced Search
-  advancedSearch: {
+
+  search: {
     title: "Advanced Search",
-    searchText: "Search Text",
+    textSearch: "Text Search",
     searchPlaceholder: "Search for phrases...",
     category: "Category",
+    language: "Language",
     allCategories: "All Categories",
+    allLanguages: "All Languages",
     tags: "Tags",
     dateFrom: "From Date",
     dateTo: "To Date",
     applyFilters: "Apply Filters",
     reset: "Reset",
-    resultsFound: "texts found"
+    resultsFound: "{count} texts found",
+    noResults: "No texts found with selected filters",
+    subtitle: "Advanced search in saved texts",
+    tipsTitle: "Search Guide",
+    tip1: "Use multiple keywords for more accurate searches",
+    tip2: "You can use combined filters",
+    tip3: "Search is performed across all text fields",
   },
-  
+
   // Statistics
   statistics: {
     title: "Statistics & Reports",
     totalTexts: "Total Texts",
-    totalWords: "Total Words", 
+    totalWords: "Total Words",
     totalCharacters: "Total Characters",
     today: "Today",
-    categoryDistribution: "Distribution by Category"
+    categoryDistribution: "Distribution by Category",
+    languageDistribution: "Distribution by Language",
+    noData: "No data available to display",
+    subtitle: "Comprehensive analysis and statistics of your texts",
+    noDataDesc: "Add new texts to see their statistics displayed here",
+    summary: "Statistics Summary",
+    avgWordsPerText: "Average words per text",
+    avgCharsPerText: "Average characters per text",
+    mostUsedLanguage: "Most used language",
+    mostUsedCategory: "Most used category",
   },
-  
+
   // Data Management
   dataManager: {
     title: "Data Management",
     exportJSON: "Export JSON",
-    importJSON: "Import JSON", 
+    importJSON: "Import JSON",
     backup: "Backup",
     restore: "Restore",
     clearAll: "Clear All Data",
     confirmTitle: "Confirm Deletion",
-    confirmMessage: "Are you sure you want to delete all data? This action cannot be undone.",
-    confirm: "Delete",
+    confirmMessage:
+      "Are you sure you want to delete {count} items? This action cannot be undone.",
     cancel: "Cancel",
-    importSuccess: "Data imported successfully",
-    backupSuccess: "Backup completed",
-    restoreSuccess: "Restore completed"
+    confirm: "Delete",
+    backupSuccess: "Backup of {count} texts completed",
+    restoreSuccess: "Restored {count} texts successfully",
+    importSuccess: "Successfully imported {count} texts",
+    importError: "Error reading file",
+    formatError: "Invalid file format",
+    readError: "Error reading file",
+    backupError: "Backup error",
+    restoreError: "Restore error",
+    noBackupFound: "No backup found",
+    invalidBackup: "Invalid backup data",
+    noValidBackup: "No valid data in backup",
+    noValidData: "No valid data in file",
+    importConfirm: "Do you want to import {count} texts?",
+    restoreConfirm: "Do you want to restore {count} texts?",
+    clearSuccess: "All data cleared successfully",
+    noDataToClear: "No data to clear",
+    totalTexts: "Total Texts",
+    totalWords: "Total Words",
+    backupStatus: "Backup Status",
+    subtitle: "Manage and backup your data",
+    exportDesc: "Export {count} texts to JSON file",
+    importDesc: "Import texts from JSON file",
+    backupDesc: "Temporarily save data in browser",
+    restoreDesc: "Restore data from backup",
+    noDataToExport: "No data to export",
+    noDataToBackup: "No data to backup",
+    noBackupAvailable: "No backup available",
+    items: "items",
+    localStorage: "Browser Storage",
+    fromBackup: "From Backup",
+    dangerZone: "Danger Zone",
+    dangerZoneDesc: "This operation cannot be undone",
+    importErrorTitle: "Import Error",
+    tipsTitle: "Data Management Tips",
+    tip1: "Regularly backup your data",
+    tip2: "Store JSON files in a safe location",
+    tip3: "Ensure you have backups before clearing data",
+    tip4: "Importing data will replace current data",
   },
-  
-  // TTS
-  textToSpeech: {
-    playing: "Playing Text",
-    stop: "✕",
-    pause: "Pause ⏸️",
-    resume: "Resume ▶️",
-    stopPlayback: "Stop ⏹️",
-    speed: "Speed:",
-    language: "Language:",
-    slow: "Slow",
-    normal: "Normal",
-    fast: "Fast",
-    veryFast: "Very Fast",
-    language: "Language"
-  }
 };

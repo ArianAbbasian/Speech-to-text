@@ -15,7 +15,6 @@ export const useSpeechToText = (options = {}) => {
   const recognitionRef = useRef(null);
   const finalTranscriptRef = useRef('');
 
-  // لیست زبان‌های پشتیبانی شده
   const supportedLanguages = [
     { code: 'fa-IR', name: 'فارسی', flag: '🇮🇷' },
     { code: 'en-US', name: 'English', flag: '🇺🇸' },
@@ -52,7 +51,6 @@ export const useSpeechToText = (options = {}) => {
     recognition.onstart = () => {
       setIsListening(true);
       setError(null);
-      console.log(`Speech recognition started in ${lang}`);
     };
 
     recognition.onresult = (event) => {
@@ -143,7 +141,6 @@ export const useSpeechToText = (options = {}) => {
     }
   }, [isListening, startListening, stopListening]);
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => {
       if (recognitionRef.current) {
