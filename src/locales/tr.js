@@ -3,7 +3,7 @@ export const tr = {
   app: {
     title: "Farsça Konuşmayı Metne Dönüştürme",
     description: "Farsça dil için gelişmiş konuşmayı metne dönüştürme aracı",
-    madeWith: "Fars topluluğu için ❤️ ile yapıldı",
+    madeWith: "ile yapıldı ❤️",
     language: "Dil",
     darkMode: "Karanlık Mod",
     lightMode: "Aydınlık Mod",

@@ -16,7 +16,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="theme-toggle flex items-center gap-2"
+      className="theme-toggle flex items-center gap-2 border-2 modern-select"
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDark ? (
@@ -125,7 +125,7 @@ const AppContent = () => {
       <div className="max-w-6xl mx-auto">
         {/* هدر */}
         <header className="text-center mb-6 sm:mb-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mb-4">
+          <div className="flex sm:flex-row justify-between items-center gap-3 mb-4">
             <div className="order-2 sm:order-1">
               <ThemeToggle />
             </div>

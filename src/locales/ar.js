@@ -3,7 +3,7 @@ export const ar = {
   app: {
     title: "تحويل الكلام إلى نص بالفارسية",
     description: "أداة متقدمة لتحويل الصوت إلى نص باللغة الفارسية",
-    madeWith: "صنع ب❤️ للمجتمع الفارسي",
+    madeWith: "❤️ صنع ب ",
     language: "اللغة",
     darkMode: "الوضع الداكن",
     lightMode: "الوضع الفاتح",

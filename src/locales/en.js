@@ -3,7 +3,7 @@ export const en = {
   app: {
     title: "Persian Speech to Text",
     description: "Advanced speech to text tool for Persian language",
-    madeWith: "Made with ❤️ for Persian community",
+    madeWith: "Made with ❤️ ",
     language: "Language",
     darkMode: "Dark Mode",
     lightMode: "Light Mode",
