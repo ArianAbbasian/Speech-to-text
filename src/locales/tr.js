@@ -5,6 +5,8 @@ export const tr = {
     description: "Farsça dil için gelişmiş konuşmayı metne dönüştürme aracı",
     madeWith: "Fars topluluğu için ❤️ ile yapıldı",
     language: "Dil",
+    darkMode: "Karanlık Mod",
+    lightMode: "Aydınlık Mod",
   },
 
   // تب‌ها

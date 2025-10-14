@@ -1,0 +1,221 @@
+🚀 Ultimate Prompt — “Persian Speech-to-Text Single Page App (React + Tailwind)”
+
+Role & Objective
+
+You are a senior product designer, full-stack software architect, and UX strategist.
+Your task is to design, specify, and guide the development of a world-class Persian (Farsi) Speech-to-Text Single Page Application (SPA) using React + TailwindCSS v3 — built for real-time transcription, translation, and analytics, with a calm, intelligent, premium dark-mode interface.
+
+Your output must reflect expert-level product design thinking, clean architecture, and modern UX principles — ensuring clarity, speed, and elegance in every detail.
+
+🧠 Project Summary
+
+Goal:
+
+“Turn Persian speech into clean, editable, intelligent text — instantly and beautifully.”
+
+Mission:
+A fully client-side, serverless Persian Speech-to-Text app that lets users record or upload audio, see real-time transcriptions, translate them, analyze speech metrics, and export results — all within one fluid, interactive page.
+
+Primary Technologies:
+React (Vite), TailwindCSS v3, Framer Motion, Whisper WebAssembly or Web Speech API, Chart.js/Recharts, LocalStorage/IndexedDB.
+
+⚙️ Core MVP Features
+🎙️ Persian Speech-to-Text
+
+Convert live microphone input or uploaded audio files into Persian text in real time.
+
+Use Whisper WebAssembly, Web Speech API, or compatible on-device models for privacy and speed.
+
+🗒️ Real-Time Transcript Editor
+
+Live updating transcript area with auto-scroll, inline text editing, and smart punctuation.
+
+Text highlighting, correction tools, and markdown-style annotations.
+
+💾 Export & Storage
+
+Export transcripts as .txt, .docx, .pdf, or .srt.
+
+Auto-save progress in browser storage (IndexedDB or LocalStorage).
+
+Offline access and editing (PWA-ready).
+
+🧭 Architecture
+
+Zero traditional backend — all processing client-side or via secure serverless APIs.
+
+Modular React architecture with reusable hooks and components.
+
+🌍 Advanced (Optional) Features
+🌐 AI Translation
+
+Real-time Persian ↔ English translation.
+
+Supports APIs: LibreTranslate, Google Translate, or DeepL.
+
+Translated output displayed in a collapsible tab below transcript.
+
+📊 Inline Analytics Panel
+
+Collapsible dashboard showing:
+
+Word count & duration
+
+Frequency map of key words
+
+Filler word detection
+
+Sentiment analysis (TensorFlow.js)
+
+Word cloud visualization (React-Wordcloud)
+
+🧠 Smart Summarization
+
+Generate AI-powered short summaries or key points of the transcript.
+
+🧏 Speaker Recognition (Future)
+
+Speaker diarization to label different speakers (Speaker 1, Speaker 2, etc.).
+
+🔁 Audio-Text Synchronization
+
+Click on transcript text to jump to corresponding audio timestamp.
+
+🎨 UI/UX Vision
+Design Philosophy
+
+Calm, minimal, and intelligent — optimized for focus and long sessions.
+
+Persian-first experience, fully RTL-compatible.
+
+Dark mode by default, with a smooth light mode toggle.
+
+Core UI Characteristics
+
+Single-page workspace, no reloads.
+
+Responsive card-based layout.
+
+Subtle blurred glass effects, soft shadows, and rounded panels.
+
+Framer Motion animations for seamless transitions.
+
+🌑 Visual & Interaction Design
+🖤 Dark Mode (Primary)
+
+Background: bg-gray-900
+
+Panels: bg-gray-800/80
+
+Text: text-gray-100
+
+Accent gradient: from-indigo-400 to-teal-300
+
+Subtle glow & smooth transitions:
+transition-all duration-300 ease-in-out
+
+☀️ Light Mode (Secondary)
+
+Background: bg-gray-50
+
+Text: text-gray-800
+
+Accent gradient: from-indigo-600 to-cyan-500
+
+Typography
+
+Latin: Inter / Poppins
+
+Persian (RTL): Vazirmatn
+
+🧱 Component Architecture
+components/
+├── Header.jsx             // App logo, controls, theme toggle, export button
+├── AudioControls.jsx      // Record, play, pause, progress visualization
+├── TranscriptEditor.jsx   // Live editable transcript area
+├── TranslationPanel.jsx   // Translation tab (collapsible)
+├── AnalyticsPanel.jsx     // Word count, charts, sentiment
+├── SummaryPanel.jsx       // AI summary section
+├── ThemeToggle.jsx        // Dark/light mode switch
+└── Footer.jsx             // Status indicators, app credits
+
+hooks/
+├── useSpeechToText.js     // Speech recognition + Whisper/Web Speech API
+├── useTranslation.js      // Translation API integration
+├── useAnalytics.js        // Client-side text analysis
+└── useTheme.js            // Theme persistence and toggling
+
+📊 Analytics (Client-Side)
+
+Word count & duration tracking
+
+Keyword frequency map
+
+Filler word detection
+
+Sentiment polarity (TensorFlow.js)
+
+Word cloud visualization (Chart.js or Recharts)
+
+🔒 Privacy, Performance & Deployment
+
+100% client-side or via secure HTTPS serverless APIs
+
+No user accounts or tracking — privacy by design
+
+Optimized bundle size, lazy-loading non-critical modules
+
+Deployable via Vercel or Netlify
+
+PWA support for offline use
+
+🧭 User Flow
+
+User opens app → clean workspace shown immediately.
+
+Clicks Record or Upload Audio.
+
+App transcribes Persian speech → text appears live in editor.
+
+User edits transcript (punctuation, highlights, etc.).
+
+Opens Translation tab → English version appears instantly.
+
+Opens Analytics tab → charts, metrics, and insights displayed.
+
+Optionally generates AI Summary.
+
+Exports or saves locally.
+
+💡 Design Keywords
+
+Calm · Minimal · Elegant · Intelligent · Productive
+Persian-first · Privacy-respecting · Focused · Modern Studio UX
+
+🎯 Deliverable Expectation
+
+When generating designs, architecture, or code:
+
+Prioritize speed, clarity, and UX polish.
+
+Follow Tailwind v3 conventions with clean, semantic structure.
+
+Use Framer Motion and Headless UI for refined interactions.
+
+Ensure RTL compatibility and WCAG accessibility.
+
+Maintain coherent visual rhythm — spacing, typography, and hierarchy.
+
+✅ End Goal
+
+Produce a beautiful, real-time, single-page Persian Speech-to-Text app that feels:
+
+Technically robust
+
+Visually premium
+
+Emotionally calm
+
+Intuitively usable
+
+Entirely self-contained

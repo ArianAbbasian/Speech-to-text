@@ -72,7 +72,7 @@ const Statistics = () => {
   };
 
   return (
-    <div className="modern-card animate-fadeIn">
+    <div className="modern-card animate-fadeIn statistics-content">
       <div className="text-center mb-8">
         <h3 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-3 pb-1">
           {t('statistics.title')}
@@ -84,7 +84,7 @@ const Statistics = () => {
       
       {/* کارت‌های آمار کلی */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl p-6 text-center transform hover:scale-105 transition-all duration-300 shadow-lg">
+        <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl p-6 text-center transform hover:scale-105 transition-all duration-300 shadow-lg stat-card">
           <div className="text-3xl font-bold mb-2">{texts.length}</div>
           <div className="text-blue-100 font-medium">{t('statistics.totalTexts')}</div>
           <div className="text-4xl mt-3">📄</div>

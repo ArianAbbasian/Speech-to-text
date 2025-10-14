@@ -5,6 +5,8 @@ export const en = {
     description: "Advanced speech to text tool for Persian language",
     madeWith: "Made with ❤️ for Persian community",
     language: "Language",
+    darkMode: "Dark Mode",
+    lightMode: "Light Mode",
   },
 
   // Tabs

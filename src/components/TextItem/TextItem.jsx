@@ -187,7 +187,7 @@ const TextItem = ({ text }) => {
       ) : (
         <div className="mb-4">
           <p
-            className="text-gray-700 leading-8 text-lg bg-gradient-to-br from-gray-50 to-blue-50 p-6 rounded-2xl border-2 border-dashed border-gray-200 hover:border-blue-300 transition-all"
+            className="text-gray-700 leading-8 text-lg bg-gradient-to-br from-gray-50 to-blue-50 p-6 rounded-2xl border-2 border-dashed border-gray-200 hover:border-blue-300 transition-all text-item-content"
             dir={
               text.language?.startsWith("fa") || text.language?.startsWith("ar")
                 ? "rtl"
