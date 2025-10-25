@@ -1,7 +1,7 @@
 export const en = {
   // General
   app: {
-    title: "Persian Speech to Text",
+    title: "Speech to Text",
     description: "Advanced speech to text tool for Persian language",
     madeWith: "Made with ❤️ ",
     language: "Language",
